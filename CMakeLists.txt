@@ -66,6 +66,12 @@ if (MSVC)
         /bigobj             # Increase number of sections in .obj files
         /DNOMINMAX)
 
+    if (DEFINED ENV{CI})
+        list(APPEND DYNARMIC_CXX_FLAGS
+            /bigobj             # Increase number of sections in .obj files
+        )
+    endif()
+
     if (DYNARMIC_WARNINGS_AS_ERRORS)
         list(APPEND DYNARMIC_CXX_FLAGS
              /WX)
